@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FX Container · GSAP 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+<main class="page">
+  <header class="intro">
+    <h1>FX Container</h1>
+    <p>One GSAP-driven 3D container with four layouts and a live accent colour. Drag it, use the arrow keys, or click the front card to flip it.</p>
+  </header>
+
+  <!-- ===== The container ===== -->
+  <section class="fx" id="fx" tabindex="0" aria-roledescription="carousel" aria-label="Services">
+    <div class="fx__scene">
+      <!-- Items: any content works inside .fx__face -->
+      <article class="fx__item"><div class="fx__card">
+        <div class="fx__face fx__face--front"><div class="fx__art"><i></i></div><div><h3 class="fx__title">Brand identity</h3><p class="fx__text">Logos, type and colour systems that hold up everywhere.</p></div></div>
+        <div class="fx__face fx__face--back"><h3 class="fx__title">Brand identity</h3><p class="fx__text">Back face. Put a call to action, specs or an image here.</p></div>
+      </div></article>
+      <article class="fx__item"><div class="fx__card">
+        <div class="fx__face fx__face--front"><div class="fx__art"><i></i></div><div><h3 class="fx__title">Web platforms</h3><p class="fx__text">Fast marketing sites and web apps built to convert.</p></div></div>
+        <div class="fx__face fx__face--back"><h3 class="fx__title">Web platforms</h3><p class="fx__text">Back face. Put a call to action, specs or an image here.</p></div>
+      </div></article>
+      <article class="fx__item"><div class="fx__card">
+        <div class="fx__face fx__face--front"><div class="fx__art"><i></i></div><div><h3 class="fx__title">Mobile apps</h3><p class="fx__text">Native-feeling products for iOS and Android.</p></div></div>
+        <div class="fx__face fx__face--back"><h3 class="fx__title">Mobile apps</h3><p class="fx__text">Back face. Put a call to action, specs or an image here.</p></div>
+      </div></article>
+      <article class="fx__item"><div class="fx__card">
+        <div class="fx__face fx__face--front"><div class="fx__art"><i></i></div><div><h3 class="fx__title">Motion design</h3><p class="fx__text">Interface animation that explains rather than decorates.</p></div></div>
+        <div class="fx__face fx__face--back"><h3 class="fx__title">Motion design</h3><p class="fx__text">Back face. Put a call to action, specs or an image here.</p></div>
+      </div></article>
+      <article class="fx__item"><div class="fx__card">
+        <div class="fx__face fx__face--front"><div class="fx__art"><i></i></div><div><h3 class="fx__title">E-commerce</h3><p class="fx__text">Storefronts tuned for checkout, not just looks.</p></div></div>
+        <div class="fx__face fx__face--back"><h3 class="fx__title">E-commerce</h3><p class="fx__text">Back face. Put a call to action, specs or an image here.</p></div>
+      </div></article>
+      <article class="fx__item"><div class="fx__card">
+        <div class="fx__face fx__face--front"><div class="fx__art"><i></i></div><div><h3 class="fx__title">Search growth</h3><p class="fx__text">Technical SEO and content that earns traffic.</p></div></div>
+        <div class="fx__face fx__face--back"><h3 class="fx__title">Search growth</h3><p class="fx__text">Back face. Put a call to action, specs or an image here.</p></div>
+      </div></article>
+      <article class="fx__item"><div class="fx__card">
+        <div class="fx__face fx__face--front"><div class="fx__art"><i></i></div><div><h3 class="fx__title">Product audits</h3><p class="fx__text">Usability reviews with a ranked list of fixes.</p></div></div>
+        <div class="fx__face fx__face--back"><h3 class="fx__title">Product audits</h3><p class="fx__text">Back face. Put a call to action, specs or an image here.</p></div>
+      </div></article>
+      <article class="fx__item"><div class="fx__card">
+        <div class="fx__face fx__face--front"><div class="fx__art"><i></i></div><div><h3 class="fx__title">Automation</h3><p class="fx__text">Integrations that remove repetitive admin work.</p></div></div>
+        <div class="fx__face fx__face--back"><h3 class="fx__title">Automation</h3><p class="fx__text">Back face. Put a call to action, specs or an image here.</p></div>
+      </div></article>
+    </div>
+    <p class="sr" aria-live="polite" id="fx-live"></p>
+  </section>
+
+  <!-- ===== Demo controls ===== -->
+  <div class="bar">
+    <div class="group">
+      <div class="seg" role="group" aria-label="Effect" id="effects">
+        <button data-effect="ring" aria-pressed="true">Ring</button>
+        <button data-effect="coverflow" aria-pressed="false">Coverflow</button>
+        <button data-effect="deck" aria-pressed="false">Deck</button>
+        <button data-effect="helix" aria-pressed="false">Helix</button>
+      </div>
+    </div>
+    <div class="group">
+      <button class="btn" id="prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <span class="count" id="count">1 / 8</span>
+      <button class="btn" id="next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <div class="group" role="group" aria-label="Accent colour" id="colors">
+      <button class="swatch" style="--c:#3D5AFE" data-c="#3D5AFE" aria-label="Indigo" aria-pressed="true"></button>
+      <button class="swatch" style="--c:#FF6B4A" data-c="#FF6B4A" aria-label="Coral" aria-pressed="false"></button>
+      <button class="swatch" style="--c:#0FA38F" data-c="#0FA38F" aria-label="Teal" aria-pressed="false"></button>
+      <button class="swatch" style="--c:#E0A21B" data-c="#E0A21B" aria-label="Amber" aria-pressed="false"></button>
+      <button class="swatch" style="--c:#C2185B" data-c="#C2185B" aria-label="Magenta" aria-pressed="false"></button>
+      <input class="picker" type="color" id="picker" value="#3D5AFE" aria-label="Custom colour">
+    </div>
+    <div class="group">
+      <label class="toggle"><input type="checkbox" id="tilt" checked> Tilt</label>
+      <label class="toggle"><input type="checkbox" id="auto"> Autoplay</label>
+    </div>
+  </div>
+
+  <details>
+    <summary>Use it in your project</summary>
+<pre><code>const fx = new FXContainer(document.querySelector('.fx'), {
+  effect: 'ring',        // 'ring' | 'coverflow' | 'deck' | 'helix' | any registered effect
+  duration: 0.9,         // step animation length (s)
+  ease: 'power3.out',
+  tilt: true,            // pointer-driven 3D tilt of the whole scene
+  autoplay: 0,           // seconds between steps, 0 = off
+  accent: '#3D5AFE',
+  onChange: (index) => console.log('active', index)
+});
+
+fx.next(); fx.prev(); fx.show(3);     // navigation
+fx.use('coverflow');                  // morph to another layout
+fx.setColor('#FF6B4A');               // animated re-theme
+fx.flip();                            // flip the active card
+fx.setAutoplay(4); fx.setTilt(false);
+fx.destroy();                         // remove listeners, clear inline styles
+
+// Add your own layout: return a pose for each item
+FXContainer.register('wave', ({ d, w }) =&gt; ({
+  x: d * w * 0.8, y: Math.sin(d) * 60, rotationZ: d * 6,
+  opacity: 1 - Math.abs(d) * 0.25
+}));</code></pre>
+  </details>
+</main>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
