@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "gsap-mcp": {
+      "command": "npx",
+      "args": ["-y", "@osaidrajput9/gsap-mcp"]
+    }
+  }
+}
